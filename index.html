@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selecciona tu emoción</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Estilo de las esferas */
+    .esfera {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,1) 10%, rgb(230, 201, 38) 50%, rgba(255,204,0,1) 100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+      cursor: pointer;
+      transition: transform 0.3s ease-in-out;
+      position: relative;
+    }
+
+    .esfera::before {
+      content: '';
+      position: absolute;
+      top: 15%;
+      left: 15%;
+      width: 30px;
+      height: 30px;
+      background-color: rgba(255, 255, 255, 0.5);
+      border-radius: 50%;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+      z-index: 1;
+    }
+
+    .esfera:hover {
+      transform: scale(1.1);
+    }
+
+    /* Centrando y ajustando el espacio entre esferas */
+    .esfera-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
+    }
+  </style>
+</head>
+<body class="bg-gray-900 text-white">
+  <header>
+    <h1>¿Cómo te sientes hoy?</h1>
+    
+
+
+    <!-- Texto elegante "Feliz San Valentín" sin recuadro -->
+    <p class="mt-4 text-2xl text-gray-800 font-playfair italic tracking-widest transition transform duration-700 hover:text-pink-500 hover:scale-110">
+      FELIZ SAN VALENTÍN
+    </p>
+  </header>
+
+  <!-- GRID SELECTIVO DE EMOCIONES -->
+  <section class="grid-seleccion">
+    <div class="grid-item amarillo" onclick="mostrarNota('Alegria')">Alegría</div>
+    <div class="grid-item rojo" onclick="mostrarNota('Ira')">Enfado</div>
+    <div class="grid-item verde" onclick="mostrarNota('Asco')">Asco/Amargura</div>
+    <div class="grid-item azul" onclick="mostrarNota('Tristeza')">Tristeza</div>
+    <div class="grid-item naranja" onclick="mostrarNota('Ansiedad')">Ansiedad</div>
+    <div class="grid-item morado" onclick="mostrarNota('Miedo')">Miedo</div>
+  </section>
+
+  <!-- SECCIÓN DE ESFERAS DE RECUERDOS -->
+  <section class="mt-10">
+    <h2 class="text-center text-3xl font-bold mb-6">Algunos Recuerdos</h2>
+    <div class="esfera-container">
+      <div class="esfera" onclick="abrirRecuerdo(1)"></div>
+      <div class="esfera" onclick="abrirRecuerdo(2)"></div>
+      <div class="esfera" onclick="abrirRecuerdo(3)"></div>
+      <div class="esfera" onclick="abrirRecuerdo(4)"></div>
+      <div class="esfera" onclick="abrirRecuerdo(5)"></div>
+      <div class="esfera" onclick="abrirRecuerdo(6)"></div>
+      <div class="esfera" onclick="abrirRecuerdo(7)"></div>
+      <div class="esfera" onclick="abrirRecuerdo(8)"></div>
+      <div class="esfera" onclick="abrirRecuerdo(9)"></div>
+      <div class="esfera" onclick="abrirRecuerdo(10)"></div>
+      
+    </div>
+  </section>
+
+  <!-- JS personalizado para abrir recuerdos -->
+  <script>
+    function abrirRecuerdo(numero) {
+      window.location.href = `recuerdo.html?recuerdo=${numero}`;
+    }
+  </script>
+
+<script src="script.js"></script>
+
+
+
+</body>
+</html>
+
+

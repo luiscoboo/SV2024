@@ -1,0 +1,247 @@
+/* Importar fuentes modernas */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap');
+
+/* Estilos generales */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(120deg, #4c067b, #010f15);
+    color: #333;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+/* Encabezado */
+header {
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    color: white;
+    padding: 50px 20px;
+    border-radius: 0 0 50px 50px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+header h1 {
+    font-family: 'Nunito', sans-serif;
+    font-size: 3rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0;
+    animation: fadeIn 1s ease-out;
+}
+
+header p {
+    font-size: 1.2rem;
+    margin-top: 15px;
+    opacity: 0.9;
+}
+
+/* Grid de selección */
+.grid-seleccion {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 40px;
+    max-width: 1200px;
+    margin: 50px auto;
+
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.grid-item {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 15px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #333;
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.grid-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.grid-item.amarillo {
+    background: linear-gradient(135deg, #ffdd57, #f6c90e);
+    color: #333;
+}
+
+.grid-item.rojo {
+    background: linear-gradient(135deg, #ff6f61, #e63946);
+    color: white;
+}
+
+.grid-item.verde {
+    background: linear-gradient(135deg, #4caf50, #8bc34a);
+    color: white;
+}
+
+.grid-item.azul {
+    background: linear-gradient(135deg, #2196f3, #03a9f4);
+    color: white;
+}
+
+.grid-item.naranja {
+    background: linear-gradient(135deg, #ff9800, #ff5722);
+    color: white;
+}
+
+.grid-item.morado {
+    background: linear-gradient(135deg, #9c27b0, #673ab7);
+    color: white;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+ /* Sección de notas */
+ .nota {
+    margin-top: 50px;
+    padding: 30px;
+    max-width: 700px;
+    margin: 50px auto;
+    background: rgba(255, 255, 255, 0.9); /* Fondo blanco translúcido */
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    transition: all 0.5s ease;
+}
+
+.nota p {
+    font-size: 1.5rem; /* Tamaño de fuente ajustado */
+    color: #333; /* Color de texto oscuro */
+    margin-bottom: 25px;
+    line-height: 1.7;
+}
+
+.nota p#notaEmocion {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #c62828; /* Color rojo oscuro */
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 768px) {
+    .grid-seleccion {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    header h1 {
+        font-size: 2.5rem;
+    }
+
+    .grid-item {
+        font-size: 1.1rem;
+    }
+
+    .nota p {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .grid-seleccion {
+        grid-template-columns: 1fr;
+    }
+
+    header h1 {
+        font-size: 2.2rem;
+    }
+
+    .grid-item {
+        font-size: 1rem;
+        padding: 20px;
+    }
+}
+
+
+
+
+
+/* Estilos para los fondos de las emociones */
+#notaBody {
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.6s ease;
+}
+
+#notaBody::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4); /* Capa oscura */
+    z-index: 1;
+}
+
+/* Clases para los diferentes fondos */
+.fondo-alegria {
+    background-image: url('alegrianota.webp');
+}
+
+.fondo-ira {
+    background-image: url('iranota.jpg');
+}
+
+.fondo-asco {
+    background-image: url('asconota.webp');
+}
+
+.fondo-tristeza {
+    background-image: url('tristezanota.webp');
+}
+
+.fondo-ansiedad {
+    background-image: url('ansiedadnota.webp');
+}
+.fondo-miedo {
+    background-image: url('miedonota.webp');
+}
+
+.fondo-default {
+    background-image: url('default.jpg');
+}
+
+/* El contenido de la nota debe estar por encima de la capa oscura */
+.nota {
+    position: relative;
+    z-index: 1;
+    background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco translúcido */
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.nota p {
+    color: #333;
+}

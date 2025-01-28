@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nota</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Animación para que el texto de la nota aparezca con un efecto de desvanecimiento y subida */
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Aplicar la animación a la nota */
+    .nota-animada {
+      animation: fadeInUp 1.5s ease-out;
+    }
+
+    /* Estilo del botón */
+    .boton-volver {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #10182b; /* Color verde */
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      text-align: center;
+      position: relative;
+      z-index: 10; /* Asegura que el botón esté por encima de otros elementos */
+    }
+
+    /* Estilo del botón al pasar el cursor */
+    .boton-volver:hover {
+      background-color: #1b2367;
+    }
+
+    /* Asegurarse de que el cuerpo tenga un alto mínimo para que el contenido se vea correctamente */
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+  </style>
+</head>
+<body id="notaBody">
+
+  <section class="nota" id="notaSection">
+    <p id="notaTexto"></p>
+    <p id="notaEmocion"></p>
+  </section>
+
+  <!-- Botón para volver al index -->
+  <button class="boton-volver" onclick="window.location.href='index.html'">Volver al inicio</button>
+
+  <script>
+    // Obtener la nota y la emoción de la URL
+    const params = new URLSearchParams(window.location.search);
+    const nota = params.get('nota');
+    const emocion = params.get('emocion');
+
+    // Mostrar la nota en la página
+    const notaTexto = document.getElementById('notaTexto');
+    notaTexto.textContent = nota;
+
+    // Agregar clase para animar la nota
+    const notaSection = document.getElementById('notaSection');
+    notaSection.classList.add('nota-animada');
+    
+    // Cambiar el fondo según la emoción
+    const body = document.getElementById('notaBody');
+    switch (emocion.toLowerCase()) {
+      case 'alegria':
+          body.classList.add('fondo-alegria');
+          break;
+      case 'ira':
+          body.classList.add('fondo-ira');
+          break;
+      case 'asco':
+          body.classList.add('fondo-asco');
+          break;
+      case 'tristeza':
+          body.classList.add('fondo-tristeza');
+          break;
+      case 'ansiedad':
+          body.classList.add('fondo-ansiedad');
+          break;
+      case 'miedo':
+          body.classList.add('fondo-miedo');
+          break;
+      default:
+          body.classList.add('fondo-default');
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Recuerdo</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Fondo con gradiente azul oscuro */
+    body {
+      background: linear-gradient(135deg, #0D1B2A 0%, #1B263B 100%);
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Estilo para el contenedor del recuerdo */
+    #mediaContainer {
+      width: 100%;
+      max-width: 600px;
+      aspect-ratio: 1 / 1; /* Relación de aspecto 1:1 */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    img, video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+
+    /* Partículas */
+    .particle {
+      position: absolute;
+      background-color: rgba(255, 223, 0, 0.6); /* Amarillo más suave */
+      border-radius: 50%;
+      pointer-events: none;
+      animation: float 10s ease-in-out infinite, fade 8s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) translateX(0) scale(0.5);
+      }
+      50% {
+        transform: translateY(-200px) translateX(100px) scale(1);
+      }
+      100% {
+        transform: translateY(0) translateX(0) scale(0.5);
+      }
+    }
+
+    @keyframes fade {
+      0%, 100% {
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+    }
+
+    .particle.small {
+      width: 5px;
+      height: 5px;
+    }
+
+    .particle.medium {
+      width: 8px;
+      height: 8px;
+    }
+
+    .particle.large {
+      width: 12px;
+      height: 12px;
+    }
+
+    @media (max-width: 640px) {
+      #mediaContainer {
+        max-width: 100%; /* Ocupará el 100% del ancho de pantallas pequeñas */
+      }
+    }
+
+    @media (min-width: 1024px) {
+      #mediaContainer {
+        max-width: 50%; /* Limitar el tamaño en pantallas más grandes */
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="text-center">
+    <h1 class="text-2xl font-bold text-white mb-4"></h1>
+    <div id="mediaContainer" class="rounded shadow-lg"></div>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const recuerdoNumero = params.get('recuerdo');
+    
+    const archivos = [
+      '5f5b5819-508e-4f4f-abcf-6aea85af11fd.JPG',
+      '90FC2D8B-ABB3-4686-A46D-D44CDCF20DE1.JPG',
+      '1698582277781.JPG',
+      'IMG-20230820-WA0050.JPG',
+      'flores.mp4',
+      'IMG-20231008-WA0012-01.JPEG',
+      'beso.mp4',
+      '33280966-1C55-4CC0-8FD7-3B09A50225E6.jpg',
+      'unnamed.jpg',
+      '3.jpg'
+    ];
+
+    const mediaContainer = document.getElementById('mediaContainer');
+    const archivo = archivos[recuerdoNumero - 1];
+    const extension = archivo.split('.').pop().toLowerCase();
+
+    if (['jpg', 'jpeg', 'png'].includes(extension)) {
+      const img = document.createElement('img');
+      img.src = archivo;
+      img.alt = "Imagen del Recuerdo";
+      mediaContainer.appendChild(img);
+    } else if (['mp4', 'webm', 'ogg'].includes(extension)) {
+      const video = document.createElement('video');
+      video.src = archivo;
+      video.autoplay = true;
+      video.loop = true;
+      video.muted = true;
+      video.playsInline = true;
+      mediaContainer.appendChild(video);
+    }
+
+    function createParticle() {
+      const particle = document.createElement('div');
+      const size = Math.random() < 0.5 ? 'small' : Math.random() < 0.5 ? 'medium' : 'large';
+      particle.classList.add('particle', size);
+
+      particle.style.left = Math.random() * 100 + 'vw';
+      particle.style.top = Math.random() * 100 + 'vh';
+
+      document.body.appendChild(particle);
+
+      const animationDuration = Math.random() * 8 + 5;
+      particle.style.animationDuration = `${animationDuration}s, ${animationDuration - 2}s`;
+
+      setTimeout(() => {
+        particle.remove();
+      }, animationDuration * 1000);
+    }
+
+    for (let i = 0; i < 50; i++) {
+      createParticle();
+    }
+
+    setInterval(createParticle, 250);
+  </script>
+</body>
+</html>
