@@ -5,7 +5,6 @@ const notas = {
     "La alegría que llevas dentro es un regalo que el mundo necesita.",
     "Cada momento de felicidad es una bendición mi morena.",
     "Tienes una luz interna que ilumina incluso los días más oscuros.",
-    "Juntos encontramos alegría en los pequeños detalles (JI JI JI JI)",
     "El Señor ha puesto en ti un espíritu de alegría que brilla.",
     "Que nada ni nadie te quite la sonrisa, bonita.",
     "El gozo del Señor es tu fortaleza mi vida",
